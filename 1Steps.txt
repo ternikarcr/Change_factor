@@ -1,0 +1,41 @@
+1. Open command prompt and type 'ubuntu'
+2. Password for 'dnk' user in ubuntu is dnk
+3. Use cd /mnt/f/Data/CMIP6_GDDP to navigate to the folder
+
+Convert daly to monthly
+1. Trial on single file:
+cdo sinfo your_input_file.nc 
+cdo monsum your_input_file.nc monthly_rainfall.nc
+cdo sinfo your_input_file.nc
+
+2. Working with all the files at once using cdo via bash script
+Convert a txt file to .sh file:
+mv convert_daily_to_monthly.sh.txt convert_daily_to_monthly.sh
+Then convert dos based file to unix readable file
+dos2unix convert_daily_to_monthly.sh
+Give user rights to run the file
+chmod +x convert_daily_to_monthly.sh
+Finally run shell script using bash
+bash convert_daily_to_monthly.sh
+
+Combine monhly files to one single file:
+Then convert dos based file to unix readable file
+dos2unix combine_monthly.sh
+Give user rights to run the file
+chmod +x combine_monthly.sh
+Finally run shell script using bash
+bash combine_monthly.sh
+Check the created file
+cdo sinfo your_input_file.nc
+
+Convert Monthly values to one Yearly average value
+Then convert dos based file to unix readable file
+dos2unix convert_monthly_to_yearly.sh
+Give user rights to run the file
+chmod +x convert_monthly_to_yearly.sh
+Finally run shell script using bash
+bash convert_monthly_to_yearly.sh
+Check the created file
+cdo sinfo your_input_file.nc
+
+
