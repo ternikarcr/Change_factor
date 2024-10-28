@@ -18,6 +18,12 @@ Loops through each climate scenario subdirectory.
 Uses the cdo monsum command to aggregate daily data into monthly totals.
 Saves each monthly aggregated file with a _monthly.nc suffix in the designated scenario folder.
 
+**4Combine_monthly.sh**
+This script combines monthly NetCDF files into aggregated files.
+
+**5Average_yearly.sh**
+This script calculates average file for each scenario
+
 **6Cf.sh**
 This script calculates change factors between historical and future climate scenarios, creating a new file for each scenario that represents the change factor
 Functionality:
@@ -25,7 +31,10 @@ Searches each scenario directory (ssp126, ssp245, etc.) for files ending in _ave
 Finds corresponding historical and future scenario files, calculates the change factor using cdo div, and saves the result with a _cf.nc suffix.
 Prints messages indicating file processing and output paths.
 
-8Average_cf.sh
+**7Compiling_results.sh**
+This script combines files from different folders and copies them to one folder. Further the files are appended to 1 single file per scenario.
+
+**8Average_cf.sh**
 This script calculates the mean of all _cf.nc files for each scenario and saves the averaged results.
 Functionality:
 Loops through each scenario in the Results directory.
@@ -33,3 +42,23 @@ Uses cdo ensmean to compute the ensemble mean across multiple _cf.nc files.
 Outputs a single mean file for each scenario with the suffix _mean.nc.
 Purpose:
 Provides a summary file for each scenario by averaging all change factor files.
+
+**Requirements**
+Linux system or Windows subsystems for Linux
+CDO (Climate Data Operators): All scripts use cdo commands to manipulate NetCDF files
+
+**Folder Structure**
+After running all scripts, the folder structure will look like this:
+base_directory/
+├── Monthly/
+│   ├── H/
+│   ├── S126/
+│   ├── S245/
+│   ├── S370/
+│   └── S585/
+└── Results/
+    ├── ssp126cf_mean.nc
+    ├── ssp245cf_mean.nc
+    ├── ssp370cf_mean.nc
+    └── ssp585cf_mean.nc
+
